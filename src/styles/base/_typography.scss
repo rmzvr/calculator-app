@@ -1,0 +1,9 @@
+@use 'font-face' as *;
+@use 'abstracts' as *;
+
+body {
+    font-family: "Spartan";
+    font-size: var(--fs-800);
+    font-style: normal;
+    font-weight: bold;
+}

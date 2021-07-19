@@ -1,0 +1,60 @@
+$theme-neutral: (
+    primary: (
+        main-bk: hsl(222, 26%, 31%),
+        keypad-bk: hsl(223, 31%, 20%),
+        screen-bk: hsl(224, 36%, 15%),
+    ),
+    secondary: (
+        key-400-bk: hsl(6, 63%, 50%),
+        key-400-shd: hsl(6, 70%, 34%),
+        key-600-bk: hsl(30, 25%, 89%),
+        key-600-shd: hsl(28, 16%, 65%),
+        key-800-bk: hsl(225, 21%, 49%),
+        key-800-shd: hsl(224, 28%, 35%),
+    ),
+    neutral: (
+        txt-100: hsl(221, 14%, 31%),
+        txt-900: hsl(0, 100%, 100%),
+    ),
+);
+
+$theme-light: (
+    primary: (
+        main-bk: hsl(0, 0%, 90%),
+        keypad-bk: hsl(0, 5%, 81%),
+        screen-bk: hsl(0, 0%, 93%),
+    ),
+    secondary: (
+        key-400-bk: hsl(185, 42%, 37%),
+        key-400-shd: hsl(185, 58%, 25%),
+        key-600-bk: hsl(25, 98%, 40%),
+        key-600-shd: hsl(25, 99%, 27%),
+        key-800-bk: hsl(45, 7%, 89%),
+        key-800-shd: hsl(35, 11%, 61%),
+    ),
+    neutral: (
+        txt-100: hsl(60, 10%, 19%),
+        txt-900: hsl(0, 100%, 100%),
+    ),
+);
+
+$theme-dark: (
+    primary: (
+        main-bk: hsl(268, 75%, 9%),
+        keypad-bk: hsl(268, 71%, 12%),
+        screen-bk: hsl(268, 71%, 12%),
+    ),
+    secondary: (
+        key-400-bk: hsl(281, 89%, 26%),
+        key-400-shd: hsl(285, 91%, 52%),
+        key-600-bk: hsl(176, 100%, 44%),
+        key-600-shd: hsl(177, 92%, 70%),
+        key-800-bk: hsl(268, 47%, 21%),
+        key-800-shd: hsl(290, 70%, 36%),
+    ),
+    neutral: (
+        txt-100: hsl(52, 100%, 62%),
+        txt-400: hsl(198, 20%, 13%),
+        txt-900: hsl(0, 100%, 100%),
+    ),
+);
