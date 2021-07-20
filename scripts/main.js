@@ -21,14 +21,14 @@ function getObjectKeyByValue(obj, val) {
 
 function getCurrentThemeName() {
   let currentBodyBackgroundColor = getComputedStyle(BODY).backgroundColor;
-  let currentTheme = getObjectKeyByValue(themesMainBackgroundColors, currentBodyBackgroundColor);
-  return currentTheme[0];
+  let currentThemeName = getObjectKeyByValue(themesMainBackgroundColors, currentBodyBackgroundColor)[0];
+  return currentThemeName;
 }
 
 function setCurrentThemePositionInSwitcher() {
   let currentThemeName = getCurrentThemeName();
-  let currentThemePosition = getObjectKeyByValue(themes, currentThemeName);
-  SLIDER.value = currentThemePosition[0];
+  let currentThemePosition = getObjectKeyByValue(themes, currentThemeName)[0];
+  SLIDER.value = currentThemePosition;
 }
 
 function switchTheme() {
