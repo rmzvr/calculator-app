@@ -1,1 +1,42 @@
-const SLIDER=document.querySelector(".slider"),ROOT_ELEMENT=document.documentElement,BODY=document.body,CALC_DISPLAY=document.querySelector(".calc__display"),CALC_BODY=document.querySelector(".calc__body");CALC_DISPLAY.innerText="test";let themes={1:"neutral",2:"light",3:"dark"},themesMainBackgroundColors={neutral:"rgb(58, 71, 100)",light:"rgb(230, 230, 230)",dark:"rgb(22, 6, 40)"};function getObjectKeyByValue(e,t){return Object.entries(e).find(e=>e[1]===t)}function getCurrentThemeName(){var e=getComputedStyle(BODY).backgroundColor;return getObjectKeyByValue(themesMainBackgroundColors,e)[0]}function setCurrentThemePositionInSwitcher(){var e=getCurrentThemeName(),e=getObjectKeyByValue(themes,e)[0];SLIDER.value=e}function switchTheme(){var e=SLIDER.value,e=themes[e];ROOT_ELEMENT.setAttribute("data-theme",e),BODY.style.backgroundColor=themesMainBackgroundColors[e]}setCurrentThemePositionInSwitcher(),SLIDER.addEventListener("change",switchTheme);
+const SLIDER = document.querySelector('.slider');
+const ROOT_ELEMENT = document.documentElement;
+const BODY = document.body;
+const CALC_DISPLAY = document.querySelector('.calc__display');
+const CALC_BODY = document.querySelector('.calc__body');
+CALC_DISPLAY.innerText = 'test';
+let themes = {
+  1: 'neutral',
+  2: 'light',
+  3: 'dark'
+};
+let themesMainBackgroundColors = {
+  'neutral': 'rgb(58, 71, 100)',
+  'light': 'rgb(230, 230, 230)',
+  'dark': 'rgb(22, 6, 40)'
+};
+
+function getObjectKeyByValue(obj, val) {
+  return Object.entries(obj).find(i => i[1] === val);
+}
+
+function getCurrentThemeName() {
+  let currentBodyBackgroundColor = getComputedStyle(BODY).backgroundColor;
+  let currentTheme = getObjectKeyByValue(themesMainBackgroundColors, currentBodyBackgroundColor);
+  return currentTheme[0];
+}
+
+function setCurrentThemePositionInSwitcher() {
+  let currentThemeName = getCurrentThemeName();
+  let currentThemePosition = getObjectKeyByValue(themes, currentThemeName);
+  SLIDER.value = currentThemePosition[0];
+}
+
+function switchTheme() {
+  let currentThemePosition = SLIDER.value;
+  let currentThemeName = themes[currentThemePosition];
+  ROOT_ELEMENT.setAttribute('data-theme', currentThemeName);
+  BODY.style.backgroundColor = themesMainBackgroundColors[currentThemeName];
+}
+
+setCurrentThemePositionInSwitcher();
+SLIDER.addEventListener('change', switchTheme);
