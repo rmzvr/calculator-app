@@ -2,3 +2,21 @@
 @use 'base' as *;
 @use 'utilities' as *;
 @use 'components' as *;
+
+body {
+    color: var(--clr-txt-900);
+    background-color: var(--clr-main-bk);
+
+    &.theme-light {
+        color: var(--clr-txt-100);
+    }
+
+    &.theme-dark {
+        color: var(--clr-txt-100);
+    }
+}
+
+header {
+    margin-top: 0.88em;
+    margin-bottom: 1em;
+}

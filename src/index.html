@@ -9,43 +9,46 @@
   <link rel="stylesheet" href="/styles/main.css">
 </head>
 
-<body class="theme-dark">
-  <main>
-    <header>
+<body class="theme-neutral">
+  <main class="container">
+    <header class="flex flex-jc-sb flex-ai-c">
       <h1 class="main-title">calc</h1>
-      <article class="theme-toggler">
-        <h2 class="theme-toggler__name">theme</h2>
-        <div class="theme-toggler__header"></div>
-        <div class="theme-toggler__body"></div>
+      <article class="theme-toggler flex">
+        <h2 class="theme-toggler__description">theme</h2>
+        <div>
+          <div class="theme-toggler__header flex flex-jc-sb">
+            <span class="theme-position">1</span>
+            <span class="theme-position">2</span>
+            <span class="theme-position">3</span>
+          </div>
+          <input class="slider" type="range" min="1" max="3" value="1">
+        </div>
       </article>
     </header>
     <div class="calc">
-      <div class="calc__display"></div>
+      <div class="calc__display">399,981</div>
       <div class="calc__body">
-        <button class="calc__key calc__number-key">1</button>
-        <button class="calc__key calc__number-key">2</button>
-        <button class="calc__key calc__number-key">3</button>
-        <button class="calc__key calc__number-key">4</button>
-        <button class="calc__key calc__number-key">5</button>
-        <button class="calc__key calc__number-key">6</button>
-        <button class="calc__key calc__number-key">7</button>
-        <button class="calc__key calc__number-key">8</button>
-        <button class="calc__key calc__number-key">9</button>
-        <button class="calc__key calc__number-key">0</button>
-        <button class="calc__key calc__number-key">.</button>
-
-        <button class="calc__key calc__operation-key">reset</button>
-        <button class="calc__key calc__operation-key">del</button>
-        <button class="calc__key calc__operation-key">+</button>
-        <button class="calc__key calc__operation-key">-</button>
-        <button class="calc__key calc__operation-key">x</button>
-        <button class="calc__key calc__operation-key">/</button>
-        <button class="calc__key calc__operation-key">=</button>
+        <button class="calc__key calc__key--style--sun">7</button>
+        <button class="calc__key calc__key--style--sun">8</button>
+        <button class="calc__key calc__key--style--sun">9</button>
+        <button class="calc__key calc__key--style--sea calc__key--type--delete">del</button>
+        <button class="calc__key calc__key--style--sun">4</button>
+        <button class="calc__key calc__key--style--sun">5</button>
+        <button class="calc__key calc__key--style--sun">6</button>
+        <button class="calc__key calc__key--style--sun">+</button>
+        <button class="calc__key calc__key--style--sun">1</button>
+        <button class="calc__key calc__key--style--sun">2</button>
+        <button class="calc__key calc__key--style--sun">3</button>
+        <button class="calc__key calc__key--style--sun">-</button>
+        <button class="calc__key calc__key--style--sun">.</button>
+        <button class="calc__key calc__key--style--sun">0</button>
+        <button class="calc__key calc__key--style--sun">/</button>
+        <button class="calc__key calc__key--style--sun">×</button>
+        <button class="calc__key calc__key--style--sea calc__key--type--reset">reset</button>
+        <button class="calc__key calc__key--style--alarm calc__key--type--equal">=</button>
       </div>
     </div>
   </main>
-
-
   <script src="/scripts/main.js"></script>
 </body>
 

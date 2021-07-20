@@ -7,3 +7,27 @@ body {
     font-style: normal;
     font-weight: bold;
 }
+
+h1 {
+    font-size: var(--fs-800);
+}
+
+.theme-toggler {
+    * {
+        font-size: var(--fs-100);
+    }
+}
+
+.theme-toggler__description {
+    text-transform: uppercase;
+    letter-spacing: 0.083em;
+}
+
+.calc__display {
+    font-size: var(--fs-900);
+}
+
+.calc__key--type--reset,
+.calc__key--type--delete {
+    font-size: var(--fs-500);
+}
