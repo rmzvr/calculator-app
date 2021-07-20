@@ -2,8 +2,8 @@ const SLIDER = document.querySelector('.slider');
 const ROOT_ELEMENT = document.documentElement;
 const BODY = document.body;
 const CALC_DISPLAY = document.querySelector('.calc__display');
-const CALC_BODY = document.querySelector('.calc__body');
-CALC_DISPLAY.innerText = 'test';
+const CALC_BODY = document.querySelector('.calc__body'); // ! Пофіксити скрипт на телефонах 
+
 let themes = {
   1: 'neutral',
   2: 'light',
@@ -13,30 +13,117 @@ let themesMainBackgroundColors = {
   'neutral': 'rgb(58, 71, 100)',
   'light': 'rgb(230, 230, 230)',
   'dark': 'rgb(22, 6, 40)'
-};
-
-function getObjectKeyByValue(obj, val) {
-  return Object.entries(obj).find(i => i[1] === val);
-}
-
-function getCurrentThemeName() {
-  let currentBodyBackgroundColor = getComputedStyle(BODY).backgroundColor;
-  let currentThemeName = getObjectKeyByValue(themesMainBackgroundColors, currentBodyBackgroundColor)[0];
-  return currentThemeName;
-}
-
-function setCurrentThemePositionInSwitcher() {
-  let currentThemeName = getCurrentThemeName();
-  let currentThemePosition = getObjectKeyByValue(themes, currentThemeName)[0];
-  SLIDER.value = currentThemePosition;
-}
+}; // function getObjectKeyByValue(obj, val) {
+//     return Object.entries(obj).find(i => i[1] === val);
+// }
+// function getCurrentThemeName() {
+//     let currentBodyBackgroundColor = getComputedStyle(BODY).backgroundColor;
+//     let currentThemeName = getObjectKeyByValue(themesMainBackgroundColors, currentBodyBackgroundColor)[0];
+//     return currentThemeName;
+// }
+// function setCurrentThemePositionInSwitcher() {
+//     let currentThemeName = getCurrentThemeName();
+//     let currentThemePosition = getObjectKeyByValue(themes, currentThemeName)[0];
+//     SLIDER.value = currentThemePosition;
+// }
 
 function switchTheme() {
   let currentThemePosition = SLIDER.value;
   let currentThemeName = themes[currentThemePosition];
   ROOT_ELEMENT.setAttribute('data-theme', currentThemeName);
   BODY.style.backgroundColor = themesMainBackgroundColors[currentThemeName];
+} // ! Видалити зі всюди ці методи
+
+
+function hideInitialZeroOnDisplay() {
+  if (CALC_DISPLAY.innerText) CALC_DISPLAY.classList.remove('null');
+} // ! Видалити зі всюди ці методи
+
+
+function showInitialZeroOnDisplay() {
+  if (!CALC_DISPLAY.innerText) CALC_DISPLAY.classList.add('null');
 }
 
-setCurrentThemePositionInSwitcher();
+function deleteLastCharacter() {
+  CALC_DISPLAY.innerText = CALC_DISPLAY.innerText.substr(0, CALC_DISPLAY.innerText.length - 1);
+}
+
+function cleanDisplay() {
+  CALC_DISPLAY.innerText = '';
+}
+
+function characterIsOperator(character) {
+  let arithmeticOperators = ['+', '-', '*', '/'];
+  let result = arithmeticOperators.some(operator => operator == character);
+  return result;
+}
+
+function renderCharacterOnDisplay(character) {
+  CALC_DISPLAY.innerText += character;
+}
+
+function renderExpressionResultOnDisplay(result) {
+  CALC_DISPLAY.innerText = +result.toFixed(2);
+} // setCurrentThemePositionInSwitcher();
+
+
 SLIDER.addEventListener('change', switchTheme);
+CALC_BODY.addEventListener('click', event => {
+  const KEY_VALUE = event.target.innerText;
+  if (event.target.classList.contains('calc__body')) return;
+  if (CALC_DISPLAY.innerText == '0') CALC_DISPLAY.innerText = ''; // ! Виправити добавлення нуля на початку та при видаленні
+
+  if (KEY_VALUE === 'DEL') {
+    console.log(CALC_DISPLAY.innerText);
+
+    if (CALC_DISPLAY.innerText < 1) {
+      console.log('work');
+      CALC_DISPLAY.innerText = 0;
+      return;
+    }
+
+    ;
+    deleteLastCharacter();
+    showInitialZeroOnDisplay();
+    return;
+  }
+
+  ;
+
+  if (KEY_VALUE === 'RESET') {
+    cleanDisplay();
+    CALC_DISPLAY.innerText = 0;
+    return;
+  }
+
+  ;
+
+  if (KEY_VALUE === '=') {
+    if (!CALC_DISPLAY.innerText) return;
+    const EXPRESSION = CALC_DISPLAY.innerText;
+    let result = eval(EXPRESSION);
+    renderExpressionResultOnDisplay(result);
+    return;
+  }
+
+  ; // ! Глянути на цю функцію і виправити її
+
+  if (CALC_DISPLAY.innerText.length <= 10) {
+    let characters = CALC_DISPLAY.innerText.split('');
+    let lastWellBeCheckedCharacter = characters[characters.length - 1];
+    let lastCharacterIsOperator = characterIsOperator(lastWellBeCheckedCharacter);
+
+    if (CALC_DISPLAY.innerText && lastCharacterIsOperator) {
+      let currectCharacterIsOperator = characterIsOperator(KEY_VALUE);
+      if (currectCharacterIsOperator) return;
+      renderCharacterOnDisplay(KEY_VALUE);
+      return;
+    }
+
+    ;
+    renderCharacterOnDisplay(KEY_VALUE);
+  }
+
+  ;
+  hideInitialZeroOnDisplay();
+});
