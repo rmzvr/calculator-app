@@ -1,13 +1,13 @@
 $theme-neutral: (
     primary: (
-        main-bk: hsl(222, 26%, 31%),
+        main-bk: hsl(221, 27%, 31%),
         keypad-bk: hsl(223, 31%, 20%),
         screen-bk: hsl(224, 36%, 15%),
     ),
     secondary: (
-        toggle-equal-key-bk: hsl(6, 63%, 50%),
-        toggle-equal-key-bk-hover: hsl(6, 93%, 67%),
-        toggle-equal-key-shd: hsl(6, 70%, 34%),
+        swither-equal-key-bk: hsl(6, 63%, 50%),
+        swither-equal-key-bk-hover: hsl(6, 93%, 67%),
+        swither-equal-key-shd: hsl(6, 70%, 34%),
         main-key-bk: hsl(30, 25%, 89%),
         main-key-bk-hover: hsl(60, 100%, 100%),
         main-key-shd: hsl(28, 16%, 65%),
@@ -28,9 +28,9 @@ $theme-light: (
         screen-bk: hsl(0, 0%, 93%),
     ),
     secondary: (
-        toggle-equal-key-bk: hsl(25, 98%, 40%),
-        toggle-equal-key-bk-hover: hsl(25, 100%, 61%),
-        toggle-equal-key-shd: hsl(25, 99%, 27%),
+        swither-equal-key-bk: hsl(25, 98%, 40%),
+        swither-equal-key-bk-hover: hsl(25, 100%, 61%),
+        swither-equal-key-shd: hsl(25, 99%, 27%),
         main-key-bk: hsl(45, 7%, 89%),
         main-key-bk-hover: hsl(0, 100%, 100%),
         main-key-shd: hsl(35, 11%, 61%),
@@ -51,9 +51,9 @@ $theme-dark: (
         screen-bk: hsl(268, 71%, 12%),
     ),
     secondary: (
-        toggle-equal-key-bk: hsl(176, 100%, 44%),
-        toggle-equal-key-bk-hover: hsl(176, 100%, 79%),
-        toggle-equal-key-shd: hsl(177, 92%, 70%),
+        swither-equal-key-bk: hsl(176, 100%, 44%),
+        swither-equal-key-bk-hover: hsl(176, 100%, 79%),
+        swither-equal-key-shd: hsl(177, 92%, 70%),
         main-key-bk: hsl(268, 47%, 21%),
         main-key-bk-hover: hsl(268, 54%, 44%),
         main-key-shd: hsl(290, 70%, 36%),

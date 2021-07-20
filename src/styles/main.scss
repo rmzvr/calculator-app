@@ -3,20 +3,47 @@
 @use 'utilities' as *;
 @use 'components' as *;
 
-body {
-    color: var(--clr-txt-900);
-    background-color: var(--clr-main-bk);
-
-    &.theme-light {
-        color: var(--clr-txt-100);
+html {
+    &[data-theme="neutral"] {
+        body {
+            color: var(--clr-txt-900);
+        }
     }
 
-    &.theme-dark {
-        color: var(--clr-txt-100);
+    &[data-theme="neutral"],
+    &[data-theme="light"] {
+        background-color: var(--clr-main-bk);
+    }
+
+    &[data-theme="light"],
+    &[data-theme="dark"] {
+        body {
+            color: var(--clr-txt-100);
+        }
     }
 }
 
 header {
     margin-top: 0.88em;
     margin-bottom: 1em;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        @include spread-map($theme-light);
+
+        color: var(--clr-txt-100);
+        background-color: var(--clr-main-bk);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        @include spread-map($theme-dark);
+
+        body {
+            color: var(--clr-txt-100);
+            background-color: var(--clr-main-bk);
+        }
+    }
 }

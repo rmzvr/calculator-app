@@ -1,15 +1,15 @@
 @use '../abstracts' as *;
 
 :root {
-    .theme-neutral {
+    &[data-theme="neutral"] {
         @include spread-map($theme-neutral);
     }
 
-    .theme-light {
+    &[data-theme="light"] {
         @include spread-map($theme-light);
     }
 
-    .theme-dark {
+    &[data-theme="dark"] {
         @include spread-map($theme-dark);
     }
 

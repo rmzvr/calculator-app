@@ -1,17 +1,17 @@
-.theme-toggler {
+.theme-switcher {
     align-items: end;
 }
 
-.theme-toggler__description {
+.theme-switcher__description {
     margin-right: 1.75em;
 }
 
-.theme-toggler__description,
-.theme-toggler__header {
+.theme-switcher__description,
+.theme-switcher__header {
     margin-bottom: 0.42em;
 }
 
-.theme-toggler__header {
+.theme-switcher__header {
     padding: 0 0.42em;
 
     * {
@@ -42,14 +42,14 @@
         border: none;
         border-radius: 50%;
 
-        background-color: var(--clr-toggle-equal-key-bk);
+        background-color: var(--clr-swither-equal-key-bk);
     }
 
     &:hover,
     &:focus {
         &::-webkit-slider-thumb,
         &::-moz-range-thumb {
-            background-color: var(--clr-toggle-equal-key-bk-hover);
+            background-color: var(--clr-swither-equal-key-bk-hover);
         }
     }
 }

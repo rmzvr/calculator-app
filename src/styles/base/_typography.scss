@@ -12,13 +12,13 @@ h1 {
     font-size: var(--fs-800);
 }
 
-.theme-toggler {
+.theme-switcher {
     * {
         font-size: var(--fs-100);
     }
 }
 
-.theme-toggler__description {
+.theme-switcher__description {
     text-transform: uppercase;
     letter-spacing: 0.083em;
 }
