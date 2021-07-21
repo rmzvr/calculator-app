@@ -1,3 +1,5 @@
+@use 'abstracts/index' as *;
+
 .calc__display {
     position: relative;
 
@@ -24,6 +26,10 @@
     gap: 0.46em;
 
     background-color: var(--clr-keypad-bk);
+
+    @include mq(large) {
+        gap: 0.75em;
+    }
 }
 
 .calc__key {
@@ -35,6 +41,10 @@
     text-transform: uppercase;
 
     transition: background-color 0.1s ease-in;
+
+    @include mq(large) {
+        border-radius: 10px;
+    }
 
     &:active {
         height: 3.75rem;
@@ -88,5 +98,9 @@
     &--type--delete {
         font-size: var(--fs-500);
         border-radius: 0.31em;
+
+        @include mq(large) {
+            border-radius: 10px;
+        }
     }
 }
