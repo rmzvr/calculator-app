@@ -26,10 +26,10 @@ function cleanDisplay() {
     CALC_DISPLAY.innerText = '';
 }
 
-function characterIsOperator(character) {
-    let arithmeticOperators = ['+', '-', '*', '/'];
+function isCharacterRepeatOneAfterAnoter(character) {
+    let characters = ['.', '+', '-', '*', '/'];
 
-    let result = arithmeticOperators.some(operator => operator == character);
+    let result = characters.some(char => char == character);
     return result;
 }
 
@@ -44,7 +44,6 @@ function renderExpressionResultOnDisplay(result) {
 if (sessionStorage.getItem('theme') == null) {
     sessionStorage.setItem('theme', SLIDER.value);
 }
-
 
 switchTheme();
 
@@ -88,10 +87,10 @@ CALC_BODY.addEventListener('click', event => {
 
     let renderedCharacters = CALC_DISPLAY.innerText.split('');
     let lastWellBeCheckedCharacter = renderedCharacters[renderedCharacters.length - 1];
-    let isLastRenderedCharacterOperator = characterIsOperator(lastWellBeCheckedCharacter);
-    let isRecentlyCharacterOperator = characterIsOperator(KEY_VALUE);
+    let isLastRenderedCharacterRepeat = isCharacterRepeatOneAfterAnoter(lastWellBeCheckedCharacter);
+    let isRecentlyCharacterRepeat = isCharacterRepeatOneAfterAnoter(KEY_VALUE);
 
-    if (isLastRenderedCharacterOperator && isRecentlyCharacterOperator) return;
+    if (isLastRenderedCharacterRepeat && isRecentlyCharacterRepeat) return;
 
     renderCharacterOnDisplay(KEY_VALUE);
 });
