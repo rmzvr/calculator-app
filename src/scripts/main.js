@@ -1,6 +1,5 @@
 const SLIDER = document.querySelector('.slider');
 const ROOT_ELEMENT = document.documentElement;
-const BODY = document.body;
 const CALC_DISPLAY = document.querySelector('.calc__display');
 const CALC_BODY = document.querySelector('.calc__body');
 
@@ -10,35 +9,9 @@ let themes = {
     3: 'dark'
 }
 
-let themesMainBackgroundColors = {
-    'neutral': 'rgb(58, 71, 100)',
-    'light': 'rgb(230, 230, 230)',
-    'dark': 'rgb(22, 6, 40)'
-}
-
-// function getObjectKeyByValue(obj, val) {
-//     return Object.entries(obj).find(i => i[1] === val);
-// }
-
-// function getCurrentThemeName() {
-//     let currentBodyBackgroundColor = getComputedStyle(BODY).backgroundColor;
-//     let currentThemeName = getObjectKeyByValue(themesMainBackgroundColors, currentBodyBackgroundColor)[0];
-//     return currentThemeName;
-// }
-
-// function setCurrentThemePositionInSwitcher() {
-//     let currentThemeName = getCurrentThemeName();
-//     let currentThemePosition = getObjectKeyByValue(themes, currentThemeName)[0];
-
-//     SLIDER.value = currentThemePosition;
-// }
-
 function switchTheme() {
-    let currentThemePosition = SLIDER.value;
-    let currentThemeName = themes[currentThemePosition];
-
-    ROOT_ELEMENT.setAttribute('data-theme', currentThemeName);
-    BODY.style.backgroundColor = themesMainBackgroundColors[currentThemeName];
+    ROOT_ELEMENT.setAttribute('data-theme', themes[sessionStorage.getItem('theme')]);
+    SLIDER.value = sessionStorage.getItem('theme');
 }
 
 function renderInitialZeroOnDisplay() {
@@ -68,11 +41,17 @@ function renderExpressionResultOnDisplay(result) {
     CALC_DISPLAY.innerText = +result.toFixed(2);
 }
 
+if (sessionStorage.getItem('theme') == null) {
+    sessionStorage.setItem('theme', SLIDER.value);
+}
 
 
-// setCurrentThemePositionInSwitcher();
+switchTheme();
 
-SLIDER.addEventListener('change', switchTheme);
+SLIDER.addEventListener('change', () => {
+    sessionStorage.setItem('theme', SLIDER.value);
+    switchTheme();
+});
 
 CALC_BODY.addEventListener('click', event => {
     const KEY_VALUE = event.target.innerText;
