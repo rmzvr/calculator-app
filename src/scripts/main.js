@@ -16,22 +16,22 @@ let themesMainBackgroundColors = {
     'dark': 'rgb(22, 6, 40)'
 }
 
-function getObjectKeyByValue(obj, val) {
-    return Object.entries(obj).find(i => i[1] === val);
-}
+// function getObjectKeyByValue(obj, val) {
+//     return Object.entries(obj).find(i => i[1] === val);
+// }
 
-function getCurrentThemeName() {
-    let currentBodyBackgroundColor = getComputedStyle(BODY).backgroundColor;
-    let currentThemeName = getObjectKeyByValue(themesMainBackgroundColors, currentBodyBackgroundColor)[0];
-    return currentThemeName;
-}
+// function getCurrentThemeName() {
+//     let currentBodyBackgroundColor = getComputedStyle(BODY).backgroundColor;
+//     let currentThemeName = getObjectKeyByValue(themesMainBackgroundColors, currentBodyBackgroundColor)[0];
+//     return currentThemeName;
+// }
 
-function setCurrentThemePositionInSwitcher() {
-    let currentThemeName = getCurrentThemeName();
-    let currentThemePosition = getObjectKeyByValue(themes, currentThemeName)[0];
+// function setCurrentThemePositionInSwitcher() {
+//     let currentThemeName = getCurrentThemeName();
+//     let currentThemePosition = getObjectKeyByValue(themes, currentThemeName)[0];
 
-    SLIDER.value = currentThemePosition;
-}
+//     SLIDER.value = currentThemePosition;
+// }
 
 function switchTheme() {
     let currentThemePosition = SLIDER.value;
@@ -41,12 +41,8 @@ function switchTheme() {
     BODY.style.backgroundColor = themesMainBackgroundColors[currentThemeName];
 }
 
-function hideInitialZeroOnDisplay() {
-    if (CALC_DISPLAY.innerText) CALC_DISPLAY.classList.remove('null');
-}
-
-function showInitialZeroOnDisplay() {
-    if (!CALC_DISPLAY.innerText) CALC_DISPLAY.classList.add('null');
+function renderInitialZeroOnDisplay() {
+    CALC_DISPLAY.innerText = 0;
 }
 
 function deleteLastCharacter() {
@@ -74,7 +70,7 @@ function renderExpressionResultOnDisplay(result) {
 
 
 
-setCurrentThemePositionInSwitcher();
+// setCurrentThemePositionInSwitcher();
 
 SLIDER.addEventListener('change', switchTheme);
 
@@ -84,19 +80,22 @@ CALC_BODY.addEventListener('click', event => {
     if (event.target.classList.contains('calc__body')) return;
 
     if (KEY_VALUE === 'DEL') {
+        if (CALC_DISPLAY.innerText == 0) return;
+
         deleteLastCharacter();
-        showInitialZeroOnDisplay();
+
+        if (!CALC_DISPLAY.innerText) renderInitialZeroOnDisplay();
         return;
     };
 
     if (KEY_VALUE === 'RESET') {
         cleanDisplay();
-        showInitialZeroOnDisplay();
+        renderInitialZeroOnDisplay();
         return;
     };
 
     if (KEY_VALUE === '=') {
-        if (!CALC_DISPLAY.innerText) return;
+        if (CALC_DISPLAY.innerText == 0) return;
 
         const EXPRESSION = CALC_DISPLAY.innerText;
         let result = eval(EXPRESSION);
@@ -105,23 +104,15 @@ CALC_BODY.addEventListener('click', event => {
         return;
     };
 
-    if (CALC_DISPLAY.innerText.length <= 13) {
-        let characters = CALC_DISPLAY.innerText.split('');
-        let lastWellBeCheckedCharacter = characters[characters.length - 1];
-        let lastCharacterIsOperator = characterIsOperator(lastWellBeCheckedCharacter);
+    if (CALC_DISPLAY.innerText.length > 10) return;
+    if (CALC_DISPLAY.innerText == 0) cleanDisplay();
 
-        if (CALC_DISPLAY.innerText && lastCharacterIsOperator) {
-            let currectCharacterIsOperator = characterIsOperator(KEY_VALUE);
+    let renderedCharacters = CALC_DISPLAY.innerText.split('');
+    let lastWellBeCheckedCharacter = renderedCharacters[renderedCharacters.length - 1];
+    let isLastRenderedCharacterOperator = characterIsOperator(lastWellBeCheckedCharacter);
+    let isRecentlyCharacterOperator = characterIsOperator(KEY_VALUE);
 
-            if (currectCharacterIsOperator) return;
+    if (isLastRenderedCharacterOperator && isRecentlyCharacterOperator) return;
 
-            renderCharacterOnDisplay(KEY_VALUE);
-            return;
-        };
-
-        renderCharacterOnDisplay(KEY_VALUE);
-    };
-
-    hideInitialZeroOnDisplay();
+    renderCharacterOnDisplay(KEY_VALUE);
 });
-
