@@ -65,7 +65,8 @@ function renderExpressionResultOnDisplay(result) {
   CALC_DISPLAY.innerText = +result.toFixed(2);
 }
 
-setTimeout(setCurrentThemePositionInSwitcher, 0);
+console.log(getComputedStyle(BODY).backgroundColor); // setTimeout(setCurrentThemePositionInSwitcher, 0);
+
 SLIDER.addEventListener('change', switchTheme);
 CALC_BODY.addEventListener('click', event => {
   const KEY_VALUE = event.target.innerText;
