@@ -22,6 +22,7 @@ function getObjectKeyByValue(obj, val) {
 
 function getCurrentThemeName() {
   let currentBodyBackgroundColor = getComputedStyle(BODY).backgroundColor;
+  console.log(currentBodyBackgroundColor);
   let currentThemeName = getObjectKeyByValue(themesMainBackgroundColors, currentBodyBackgroundColor);
   return currentThemeName;
 }
@@ -63,9 +64,9 @@ function renderCharacterOnDisplay(character) {
 
 function renderExpressionResultOnDisplay(result) {
   CALC_DISPLAY.innerText = +result.toFixed(2);
-}
+} // setCurrentThemePositionInSwitcher();
 
-setCurrentThemePositionInSwitcher();
+
 SLIDER.addEventListener('change', switchTheme);
 CALC_BODY.addEventListener('click', event => {
   const KEY_VALUE = event.target.innerText;
