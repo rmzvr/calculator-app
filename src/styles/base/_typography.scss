@@ -27,7 +27,7 @@ h1 {
     font-size: var(--fs-900);
 }
 
-.calc__key--type--reset,
-.calc__key--type--delete {
+[data-type="reset"],
+[data-type="delete"] {
     font-size: var(--fs-500);
 }
