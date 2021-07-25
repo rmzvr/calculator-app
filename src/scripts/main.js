@@ -1,5 +1,7 @@
 const ROOT_ELEMENT = document.documentElement;
-const SLIDER = document.querySelector('.slider');
+const THEME_SWITCHER = document.querySelector('.theme-switcher__body');
+const THEME_BUTTONS = document.querySelectorAll('.theme-switcher__button');
+const THEME_SLIDER = document.querySelector('.theme-switcher__slider');
 const DISPLAY = document.querySelector('.calc__display');
 const KEYPAD = document.querySelector('.calc__keypad');
 
@@ -11,16 +13,25 @@ let themes = {
 
 let specialCharacters = ['.', '+', '-', '*', '/'];
 
+
+
+
 if (sessionStorage.getItem('theme') == null) {
-    sessionStorage.setItem('theme', SLIDER.value);
+    let checkedButtonPosition = getCheckedButton(THEME_BUTTONS).dataset.themeNumber;
+    sessionStorage.setItem('theme', checkedButtonPosition);
 }
 
 switchTheme();
 
-SLIDER.addEventListener('change', () => {
-    sessionStorage.setItem('theme', SLIDER.value);
+THEME_SWITCHER.addEventListener('click', event => {
+    if (event.target.type !== 'radio') return;
+
+    let themeNumber = event.target.dataset.themeNumber;
+
+    sessionStorage.setItem('theme', themeNumber);
     switchTheme();
 });
+
 
 KEYPAD.addEventListener('click', event => {
     const KEY = event.target;
@@ -88,8 +99,6 @@ KEYPAD.addEventListener('click', event => {
 });
 
 
-
-
 window.addEventListener('keydown', event => {
     const KEY = event.key;
     const DISPLAY_TEXT = DISPLAY.textContent;
@@ -138,13 +147,37 @@ window.addEventListener('keydown', event => {
 
 
 
+function moveSlider(position) {
+    let sliderPositions = {
+        1: '7%',
+        2: '39%',
+        3: '70%'
+    }
 
+    THEME_SLIDER.style.left = sliderPositions[position];
+}
 
+function getCheckedButton(buttons) {
+    if (!Array.isArray(buttons)) {
+        buttons = Array.from(buttons);
+    }
 
+    return buttons.find(button => button.checked);
+}
 
 function switchTheme() {
+    let themeButtons = Array.from(THEME_BUTTONS);
+
     ROOT_ELEMENT.setAttribute('data-theme', themes[sessionStorage.getItem('theme')]);
-    SLIDER.value = sessionStorage.getItem('theme');
+
+    themeButtons.map(button => {
+        let themeButtonPosition = button.dataset.themeNumber;
+        let сurrentNumberOfAppliedTheme = sessionStorage.getItem('theme');
+
+        if (сurrentNumberOfAppliedTheme == themeButtonPosition) button.setAttribute('checked', true);
+    });
+
+    moveSlider(sessionStorage.getItem('theme'));
 }
 
 function renderInitialZeroOnDisplay() {

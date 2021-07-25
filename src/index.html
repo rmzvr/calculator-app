@@ -14,18 +14,31 @@
     <header class="flex flex-jc-sb flex-ai-c">
       <h1 class="main-title">calc</h1>
       <article class="theme-switcher flex">
-        <h2 class="theme-switcher__description">theme</h2>
+        <h2 class="theme-switcher__title">theme</h2>
+
         <div>
           <div class="theme-switcher__header flex flex-jc-sb">
+            <label class="theme-switcher__button-position" for="theme1">1</label>
+            <label class="theme-switcher__button-position" for="theme2">2</label>
+            <label class="theme-switcher__button-position" for="theme3">3</label>
+          </div>
+
+          <div class="theme-switcher__body flex flex-jc-sb">
+            <div class="theme-switcher__slider"></div>
+            <input class="theme-switcher__button" type="radio" name="radio" id="theme1" data-theme-number="1" checked>
+            <input class="theme-switcher__button" type="radio" name="radio" id="theme2" data-theme-number="2">
+            <input class="theme-switcher__button" type="radio" name="radio" id="theme3" data-theme-number="3">
+          </div>
+        </div>
+      </article>
+
+      <!-- <div class="theme-switcher__header flex flex-jc-sb">
             <span class="theme-position">1</span>
             <span class="theme-position">2</span>
             <span class="theme-position">3</span>
           </div>
-          <label>
-            <input class="slider" id="slider" type="range" min="1" max="3" value="1">
-          </label>
-        </div>
-      </article>
+          <input class="slider" id="slider" type="range" min="1" max="3" value="1"> -->
+
     </header>
     <div class="calc">
       <div class="calc__display">0</div>

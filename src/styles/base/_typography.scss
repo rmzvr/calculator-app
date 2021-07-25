@@ -12,13 +12,12 @@ h1 {
     font-size: var(--fs-800);
 }
 
-.theme-switcher {
-    * {
-        font-size: var(--fs-100);
-    }
+.theme-switcher,
+.theme-switcher__title {
+    font-size: var(--fs-100);
 }
 
-.theme-switcher__description {
+.theme-switcher__title {
     text-transform: uppercase;
     letter-spacing: 0.083em;
 }
