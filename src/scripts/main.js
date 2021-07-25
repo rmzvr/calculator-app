@@ -64,16 +64,27 @@ KEYPAD.addEventListener('click', event => {
         return;
     };
 
-
-
     if (DISPLAY_TEXT.length > 10) return;
 
     if (DISPLAY_TEXT == '0') cleanDisplay();
+
+    if (DISPLAY_TEXT == '0' && KEY_VALUE == '-') {
+        cleanDisplay();
+        renderCharacter(KEY_VALUE);
+        return;
+    }
 
     if (DISPLAY_TEXT == '0' && KEY_VALUE == '.') {
         renderCharacter(0);
         renderCharacter(KEY_VALUE);
         return;
+    }
+
+    if (KEY_VALUE == '.') {
+        let renderedText = DISPLAY.textContent.split('');
+        let filteredCharasters = renderedText.filter(character => !Number.isInteger(+character));
+
+        if (filteredCharasters[filteredCharasters.length - 1] == '.') return;
     }
 
     if (specialCharacters.find(char => char === KEY_VALUE)) {
@@ -122,8 +133,21 @@ window.addEventListener('keydown', event => {
 
     if (DISPLAY_TEXT.length > 10) return;
 
+    if (DISPLAY_TEXT == '0' && KEY == '-') {
+        cleanDisplay();
+        renderCharacter(KEY);
+        return;
+    }
+
     if (DISPLAY_TEXT == '0' && KEY == '.') {
         renderCharacter(KEY);
+    }
+
+    if (KEY == '.') {
+        let renderedText = DISPLAY.textContent.split('');
+        let filteredCharasters = renderedText.filter(character => !Number.isInteger(+character));
+
+        if (filteredCharasters[filteredCharasters.length - 1] == '.') return;
     }
 
     if (specialCharacters.find(char => char === KEY)) {
@@ -170,7 +194,7 @@ function switchTheme() {
 
     ROOT_ELEMENT.setAttribute('data-theme', themes[sessionStorage.getItem('theme')]);
 
-    themeButtons.map(button => {
+    themeButtons.forEach(button => {
         let themeButtonPosition = button.dataset.themeNumber;
         let сurrentNumberOfAppliedTheme = sessionStorage.getItem('theme');
 
