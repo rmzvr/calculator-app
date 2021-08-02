@@ -61,10 +61,6 @@ Users should be able to:
 - Responsive design
 - Mobile-first workflow
 
-### What I learned
-
-Soon...
-
 ## Author
 
 - Github - [rzvr](https://github.com/rzvr)
