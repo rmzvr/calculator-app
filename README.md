@@ -46,7 +46,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Frontend Mentor Solution](https://www.frontendmentor.io/solutions/calculator-app-using-gulp-sass-js-bem-html-responsive-design-TRMnR7Kz1)
-- Live Site URL: [Github Pages](https://rzvr.github.io/calculator-app/)
+- Live Site URL: [Github Pages](https://rmzvr.github.io/calculator-app/)
 
 ## My process
 
@@ -63,7 +63,7 @@ Users should be able to:
 
 ## Author
 
-- Github - [rzvr](https://github.com/rzvr)
-- Codewars - [rzvr](https://www.codewars.com/users/rzvr)
-- LinkedIn - [Roman Zvir](https://www.linkedin.com/in/roman-zvir-8a4394214)
-- Frontend Mentor - [rzvr](https://www.frontendmentor.io/profile/rzvr)
+- [Github](https://github.com/rmzvr)
+- [LinkedIn](https://www.linkedin.com/in/rmzvr)
+- [Codewars](https://www.codewars.com/users/rmzvr)
+- [Frontend Mentor](https://www.frontendmentor.io/profile/rmzvr)
